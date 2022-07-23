@@ -1,0 +1,111 @@
+html,body{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.navBar{
+    display: flex;
+    width: 100vw;
+    height: 20vh;
+    color: white;
+    background: linear-gradient(180deg,#1c1b4b,rgba(18,8,29,.94));
+    align-items: center;
+    justify-content: space-between;
+}
+.logoNameContainer{
+    display: inherit;
+    align-items:center;
+    height: inherit;
+    width: max-content;
+    cursor: pointer;
+    text-decoration: none;
+    padding-left: 2%;
+}
+
+.navOptionsContainer{
+    padding-right: 2%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+.navOptionsContainer ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+
+.navBar a:visited{
+    color: white;
+}
+
+.logoImage{
+    height: 60%;
+}
+
+.appName{
+    font-family: Poppins, sans-serif;
+    padding-left: 10px;
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+.btn {
+    background-color: #c620a7;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 10vw;
+    padding: 5%;
+    border: none;
+    text-align: center;
+    font-family: Poppins, sans-serif;
+    font-size: large;
+    transition: all;
+    transition-duration: .2s;
+    transition-timing-function: ease-out;
+}
+
+.btn:hover{
+    transform: scale(1.1);
+    background-color: #6b1b5b;
+    border: solid  2px #c620a7;
+}
+
+.canvasParentContainer{
+
+    margin: 0;
+    height: 70vh;
+    width: 100vw;
+}
+
+.footerBar{
+    display: flex;
+    background-color: ghostwhite;
+    font-size: medium;
+    font-family: Poppins, sans-serif;
+    height: 10vh;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+
+}
+
+.footerBar a:visited{
+    color: black;
+}
+
+@media only screen and (max-width: 480px) {
+    .logoImage{
+        height: 30%;
+    }
+
+    .appName{
+        font-size: large;
+    }
+    .btn{
+        width: 20vw;
+    }
+}
