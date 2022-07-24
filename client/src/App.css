@@ -76,6 +76,8 @@ html,body{
 
 .canvasParentContainer{
     display: flex;
+    text-align: center;
+    font-family: Poppins, sans-serif;
     background: black;
     justify-content: center;
     align-items: center;
