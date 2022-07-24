@@ -10,7 +10,7 @@ import {TextureLoader} from "three/src/loaders/TextureLoader";
 
 
 //Sprite Character component
-const CharacterSprite=({map})=>{
+const CharacterSprite=({mapPlaneBoundingBox})=>{
     //Camera
     const { camera  } = useThree()
 
@@ -35,6 +35,7 @@ const CharacterSprite=({map})=>{
     },[])
 
 
+
     //Setter function to set/update Sprite position
     let setCharacterSpritePosition=(xOffsetValue,yOffsetValue,meshOffsetDirection)=>{
 
@@ -46,32 +47,55 @@ const CharacterSprite=({map})=>{
         //Update Sprite Plane Mesh Position
         switch (meshOffsetDirection){
             case "+x":
-                spriteMesh.current.position.x+=0.1
                 //Scale Mesh to flip to right
                 spriteMesh.current.scale.x = -1
-                //Update Camera  Position
-                camera.position.x+=0.1
+
+                if(spriteMesh.current.position.x <= mapPlaneBoundingBox.xMax){
+                    //Update SpriteMesh postion
+                    spriteMesh.current.position.x+=0.1
+
+                    //Update Camera  Position
+                    camera.position.x+=0.1
+                }
+
+
                 break;
 
             case "-x":
-                spriteMesh.current.position.x-=0.1
                 //Scale Mesh to flip to left
                 spriteMesh.current.scale.x = 1
-                //Update Camera  Position
-                camera.position.x-=0.1
+
+                if(spriteMesh.current.position.x >= mapPlaneBoundingBox.xMin){
+                    //Update SpriteMesh postion
+                    spriteMesh.current.position.x-=0.1
+
+                    //Update Camera  Position
+                    camera.position.x-=0.1
+                }
+
                 break;
 
             case "+y":
-                spriteMesh.current.position.y+=0.1
-                //Update Camera  Position
-                camera.position.y+=0.1
+                if(spriteMesh.current.position.y <= mapPlaneBoundingBox.yMax){
+                    //Update SpriteMesh postion
+                    spriteMesh.current.position.y+=0.1
+
+                    //Update Camera  Position
+                    camera.position.y+=0.1
+                }
+
+
                 break;
 
             case "-y":
-                spriteMesh.current.position.y-=0.1
-                //Update Camera  Position
-                camera.position.y-=0.1
-                break;
+                if(spriteMesh.current.position.y >= mapPlaneBoundingBox.yMin){
+                    //Update SpriteMesh postion
+                    spriteMesh.current.position.y-=0.1
+
+                    //Update Camera  Position
+                    camera.position.y-=0.1
+                    break;
+                }
 
             default:console.warn("Invalid")
                 break
@@ -118,14 +142,12 @@ const CharacterSprite=({map})=>{
     }
 
 
-
-
     return(
         //Sprite Plane Mesh
         <mesh ref={spriteMesh} position={[0,0,0]} >
 
             <planeGeometry args={[1, 1]} />
-            <meshStandardMaterial  transparent={true}   map={spriteTexture}/>
+            <meshStandardMaterial transparent={true} map={spriteTexture}/>
         </mesh>
     )
 }

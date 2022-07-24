@@ -14,7 +14,7 @@ const SceneCanvas=()=>{
         <div className={"canvasParentContainer"}>
 
             {/*Canvas*/}
-           <Canvas ref={sceneCanvas} camera={{position :[0,0,3]}} flat linear>
+           <Canvas gl={{ antialias: true }} ref={sceneCanvas} camera={{position :[0,0,4]}} flat linear>
                {/*Light*/}
                <ambientLight />
 

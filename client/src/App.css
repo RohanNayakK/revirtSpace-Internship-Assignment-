@@ -2,6 +2,7 @@ html,body{
     margin: 0;
     padding: 0;
     overflow: hidden;
+    background: black;
 }
 
 .navBar{
@@ -87,8 +88,11 @@ html,body{
 }
 
 .footerBar{
+    position: fixed;
+    bottom: 0;
     display: flex;
-    background: rgba(255,255,255,0.1);
+    background: linear-gradient(to bottom right,#1c1b4b,#1e0b2c);;
+    color: white;
     font-size: medium;
     font-family: Poppins, sans-serif;
     height: 10vh;
@@ -98,8 +102,16 @@ html,body{
 
 }
 
+.loadFont{
+    font-family: Poppins, sans-serif;
+    color: white;
+    text-align: center;
+    justify-self: center;
+}
+
 .footerBar a:visited{
-    color: black;
+    color: white;
+
 }
 
 @media only screen and (max-width: 480px) {

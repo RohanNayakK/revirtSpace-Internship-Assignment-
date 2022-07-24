@@ -16,7 +16,7 @@ function App() {
       <>
           <Navbar/>
 
-          <React.Suspense fallback={<h3>Loading...</h3>}>
+          <React.Suspense fallback={<h2 className={"loadFont"}>Loading...</h2>}>
               <SceneCanvas/>
           </React.Suspense>
 
