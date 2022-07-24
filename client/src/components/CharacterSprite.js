@@ -35,6 +35,49 @@ const CharacterSprite=({map})=>{
     },[])
 
 
+    //Setter function to set/update Sprite position
+    let setCharacterSpritePosition=(xOffsetValue,yOffsetValue,meshOffsetDirection)=>{
+
+        //Update Sprite Texture Offset
+        spriteTexture.offset.x  += xOffsetValue;
+        spriteTexture.offset.y   = yOffsetValue;
+
+
+        //Update Sprite Plane Mesh Position
+        switch (meshOffsetDirection){
+            case "+x":
+                spriteMesh.current.position.x+=0.1
+                //Scale Mesh to flip to right
+                spriteMesh.current.scale.x = -1
+                //Update Camera  Position
+                camera.position.x+=0.1
+                break;
+
+            case "-x":
+                spriteMesh.current.position.x-=0.1
+                //Scale Mesh to flip to left
+                spriteMesh.current.scale.x = 1
+                //Update Camera  Position
+                camera.position.x-=0.1
+                break;
+
+            case "+y":
+                spriteMesh.current.position.y+=0.1
+                //Update Camera  Position
+                camera.position.y+=0.1
+                break;
+
+            case "-y":
+                spriteMesh.current.position.y-=0.1
+                //Update Camera  Position
+                camera.position.y-=0.1
+                break;
+
+            default:console.warn("Invalid")
+                break
+
+        }
+    }
 
 
     //Keydown Event Handler
@@ -46,80 +89,43 @@ const CharacterSprite=({map})=>{
         //right motion
         if(keyCode===68 || keyCode===39){
 
-            //Update Sprite Offset
-            spriteTexture.offset.x +=1/4;
-            spriteTexture.offset.y = 1/3;
-
-            //Scale Mesh to flip to right
-            spriteMesh.current.scale.x = -1
-
-            //Update Sprite Plane Mesh Position
-            spriteMesh.current.position.x+=0.1
-
-            //Update Camera  Position
-            camera.position.x+=0.1
+            //Set Position Function Call
+            setCharacterSpritePosition(1/4,1/3,"+x")
 
         }
         //left motion
         else if(keyCode===65 || keyCode===37) {
 
-            //Update Sprite Offset
-            spriteTexture.offset.x +=1/4;
-            spriteTexture.offset.y = 1/3;
-
-            //Scale Mesh to flip to left
-            spriteMesh.current.scale.x = 1
-
-            //Update Sprite Plane Mesh Position
-            spriteMesh.current.position.x-=0.1
-
-            //Update Camera  Position
-            camera.position.x-=0.1
+            //Set Position Function Call
+            setCharacterSpritePosition(1/4,1/3,"-x")
 
         }
         //forward motion
         else if(keyCode===87 || keyCode===38) {
 
-            //Update Sprite Offset
-            spriteTexture.offset.x +=1/4;
-            spriteTexture.offset.y = 1;
+            //Set Position Function Call
+            setCharacterSpritePosition(1/4,1,"+y")
 
-            //Update Sprite Plane Mesh Position
-            spriteMesh.current.position.y+=0.1
-
-            //Update Camera  Position
-            camera.position.y+=0.1
         }
         //back motion
         else if(keyCode===83 || keyCode===40) {
 
-            //Update Sprite Offset
-            spriteTexture.offset.x +=1/4;
-            spriteTexture.offset.y = -1/3;
+            //Set Position Function Call
+            setCharacterSpritePosition(1/4,-1/3,"-y")
 
-            //Update Sprite Plane Mesh Position
-            spriteMesh.current.position.y-=0.1
-
-            //Update Camera  Position
-
-            camera.position.y-=0.1
-            console.log(camera)
         }
 
     }
 
-    useFrame(()=>{
-      let mapBounding =map.current.geometry.boundingSphere
-        console.log(camera)
 
-    })
 
 
     return(
         //Sprite Plane Mesh
         <mesh ref={spriteMesh} position={[0,0,0]} >
+
             <planeGeometry args={[1, 1]} />
-            <meshStandardMaterial transparent={true}  map={spriteTexture}/>
+            <meshStandardMaterial  transparent={true}   map={spriteTexture}/>
         </mesh>
     )
 }

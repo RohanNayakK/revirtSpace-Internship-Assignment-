@@ -1,4 +1,6 @@
 //import dependencies
+import React from 'react';
+//StyleSheet
 import './App.css';
 
 //import components
@@ -13,7 +15,11 @@ function App() {
   return (
       <>
           <Navbar/>
-          <SceneCanvas/>
+
+          <React.Suspense fallback={<h3>Loading...</h3>}>
+              <SceneCanvas/>
+          </React.Suspense>
+
           <Footer/>
       </>
 
