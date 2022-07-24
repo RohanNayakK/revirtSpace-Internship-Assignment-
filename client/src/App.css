@@ -75,7 +75,10 @@ html,body{
 }
 
 .canvasParentContainer{
-
+    display: flex;
+    background: black;
+    justify-content: center;
+    align-items: center;
     margin: 0;
     height: 70vh;
     width: 100vw;
@@ -83,7 +86,7 @@ html,body{
 
 .footerBar{
     display: flex;
-    background-color: ghostwhite;
+    background: rgba(255,255,255,0.1);
     font-size: medium;
     font-family: Poppins, sans-serif;
     height: 10vh;

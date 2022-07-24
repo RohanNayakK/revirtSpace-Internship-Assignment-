@@ -9,7 +9,6 @@ const Navbar=()=>{
             </a>
             <div className={"navOptionsContainer"}>
                 <ul >
-
                         <li>
                             <a target={"_blank"} href={"https://github.com/RohanNayakK/revirtSpace-Internship-Assignment-"}>
                             <button className={"btn"}>
@@ -17,7 +16,6 @@ const Navbar=()=>{
                             </button>
                             </a>
                         </li>
-
                 </ul>
             </div>
 

@@ -1,40 +1,29 @@
-import React, { useRef, useState } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
+//import dependencies
+import React, {useRef} from 'react'
+import {Canvas} from '@react-three/fiber'
 
-function Box(props) {
-    // This reference will give us direct access to the mesh
-    const mesh = useRef()
-    // Set up state for the hovered and active state
-    const [hovered, setHover] = useState(false)
-    const [active, setActive] = useState(false)
-    // Subscribe this component to the render-loop, rotate the mesh every frame
-    useFrame((state, delta) => (mesh.current.rotation.x += 0.01))
-    // Return view, these are regular three.js elements expressed in JSX
-    return (
-        <mesh
-            {...props}
-            ref={mesh}
-            scale={active ? 1.5 : 1}
-            onClick={(event) => setActive(!active)}
-            onPointerOver={(event) => setHover(true)}
-            onPointerOut={(event) => setHover(false)}>
-            <boxGeometry args={[2, 2, 2]} />
-            <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} />
-        </mesh>
-    )
-}
 
+//import components ( Scene Objects )
+import Map from "./Map";
+
+//Scene component
 const SceneCanvas=()=>{
-return(
-   <div className={"canvasParentContainer"}>
-       <Canvas>
-           <ambientLight />
-           <pointLight position={[10, 10, 10]} />
-           <Box position={[-1.2, 0, 0]} />
-           <Box position={[1.2, 0, 0]} />
-       </Canvas>
+    let sceneCanvas=useRef()
 
-   </div>
+    return(
+        <div className={"canvasParentContainer"}>
+
+            {/*Canvas*/}
+           <Canvas ref={sceneCanvas} camera={{position :[0,0,3]}} flat linear>
+               {/*Light*/}
+               <ambientLight />
+
+               {/*Map (2D World)*/}
+               <Map/>
+
+           </Canvas>
+
+        </div>
 
 )
 }
