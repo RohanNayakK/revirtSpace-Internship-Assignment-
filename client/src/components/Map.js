@@ -36,6 +36,14 @@ const computeBoundingBox =(points)=> {
 
 }
 
+let computeGrid=()=>{
+    let divisions=Math.floor(MapPlaneBoundingBox.xMax/2*MapPlaneBoundingBox.xMax)-2;
+    let rows = divisions/2;
+    let cols = divisions/2;
+
+
+}
+
 
 //Map Component (2D World)
 const Map=()=>{
@@ -52,8 +60,8 @@ const Map=()=>{
 
     //Initialise
     useEffect(()=>{
-        console.log(mapRef.current.geometry)
         computeBoundingBox(mapRef.current.geometry.attributes.position.array)
+        computeGrid()
     },[])
 
 

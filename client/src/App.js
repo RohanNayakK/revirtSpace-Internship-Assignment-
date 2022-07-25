@@ -7,6 +7,7 @@ import './App.css';
 import Navbar from "./components/Navbar";
 import SceneCanvas from "./components/SceneCanvas";
 import Footer from "./components/Footer";
+import Loader from "./components/Loader";
 
 //App component
 function App() {
@@ -16,7 +17,7 @@ function App() {
       <>
           <Navbar/>
 
-          <React.Suspense fallback={<h2 className={"loadFont"}>Loading...</h2>}>
+          <React.Suspense fallback={<Loader/>}>
               <SceneCanvas/>
           </React.Suspense>
 

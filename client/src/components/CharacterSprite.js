@@ -54,10 +54,12 @@ const CharacterSprite=({mapPlaneBoundingBox})=>{
                     //Update SpriteMesh postion
                     spriteMesh.current.position.x+=0.1
 
-                    //Update Camera  Position
-                    camera.position.x+=0.1
+                    //Check camera Bound vs Plane Map Bound
+                    if(camera.position.x <(mapPlaneBoundingBox.xMax*0.50)){
+                        //Update Camera  Position
+                        camera.position.x+=0.1
+                    }
                 }
-
 
                 break;
 
@@ -69,8 +71,12 @@ const CharacterSprite=({mapPlaneBoundingBox})=>{
                     //Update SpriteMesh postion
                     spriteMesh.current.position.x-=0.1
 
-                    //Update Camera  Position
-                    camera.position.x-=0.1
+                    //Check Camera Bound vs Plane Map Bound
+                    if(camera.position.x >(mapPlaneBoundingBox.xMin*0.50)){
+                        //Update Camera  Position
+                        camera.position.x-=0.1
+                    }
+
                 }
 
                 break;
@@ -144,6 +150,7 @@ const CharacterSprite=({mapPlaneBoundingBox})=>{
 
     return(
         //Sprite Plane Mesh
+
         <mesh ref={spriteMesh} position={[0,0,0]} >
 
             <planeGeometry args={[1, 1]} />

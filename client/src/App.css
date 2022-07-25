@@ -89,6 +89,7 @@ html,body{
 
 .footerBar{
     position: fixed;
+    text-align: center;
     bottom: 0;
     display: flex;
     background: linear-gradient(to bottom right,#1c1b4b,#1e0b2c);;
@@ -109,10 +110,27 @@ html,body{
     justify-self: center;
 }
 
+.loaderContainer{
+    display: flex;
+    height: 70vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.loaderLogoImage{
+    height: 200px;
+    opacity: 50%;
+    margin-bottom: 20px;
+}
+
 .footerBar a:visited{
     color: white;
 
 }
+
+
 
 @media only screen and (max-width: 480px) {
     .logoImage{
